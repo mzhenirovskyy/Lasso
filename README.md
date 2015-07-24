@@ -17,6 +17,6 @@ Taking into account “Boundary conditions” the “coordinate descent” (https://en.w
 If regularization parameter alpha equals zero the “gradient descent” applied.
 
 Discussion:
-1.	From the examples (small_examples.py and big_example.py) we can see that our implementation gives a very close results to scikit-learn.
-2.	Of course, we lose in time. It’s understandable because scikit-learn uses low-level BLAS (via C interface).
+From the examples (small_examples.py and big_example.py) we can see that our implementation gives a very close results to scikit-learn.
+Of course, we lose in time. It’s understandable because scikit-learn uses low-level BLAS (via C interface).
 
