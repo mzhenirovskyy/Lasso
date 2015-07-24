@@ -48,7 +48,7 @@ class Lasso(object):
         cost = np.sum(residual ** 2)
         for k in range(max_iter_grad):
             self.beta[number_j] -= ((learning_rate / residual.size) *
-                                    (np.dot(self.X.T, residual)[number_j]))
+                                    (np.dot(self.X.T[number_j], residual)))
             if number_j > 0:
                 self.beta[number_j] -= (learning_rate * self._alfa *
                                         np.sign(self.beta[number_j]))

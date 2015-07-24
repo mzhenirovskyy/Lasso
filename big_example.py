@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.linear_model import Lasso as Sklearn_lasso
 from linear_regretion import Lasso
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, mean_squared_error
 
 ###############################################################################
 # generate some data to play with
@@ -28,27 +28,19 @@ lasso = Lasso(alfa=alpha)
 predict = lasso.fit(X_train, Y_train).predict(X_test)
 beta = lasso.beta
 
-# Let estimate r2_score
-# http://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html
+# Let see the rmse
+# http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html
 
-sklearn_r2 = r2_score(sklearn_predict, Y_test)
-print('sklearn_r2 = ', sklearn_r2)
-r2 = r2_score(predict, Y_test)
-print('r2 = ', r2)
+rmse = mean_squared_error(predict, Y_test)
+print('rmse = ', rmse)
 
-r2_diff = abs(sklearn_r2 - r2) / sklearn_r2
-print('r2_diff = ', r2_diff)
+sklearn_rmse = mean_squared_error(sklearn_predict, Y_test)
+print('sklearn_rmse = ', sklearn_rmse)
 
-# Let see the L^2 vector norm of residual
+# rmse for beta
 
-norm2_residual = np.sum((predict - Y_test) ** 2)
-print('norm2_residual = ', norm2_residual)
-
-sklearn_norm2_residual = np.sum((sklearn_predict - Y_test) ** 2)
-print('sklearn_norm2_residual = ', sklearn_norm2_residual)
-
-norm2_diff = abs(sklearn_norm2_residual - norm2_residual) / sklearn_norm2_residual
-print('norm2_diff = ', norm2_diff)
+rmse_beta = mean_squared_error(beta, sklearn_beta)
+print('rmse_beta = ', rmse_beta)
 
 # ---------------------MY OUTPUT------------------------------------------
 # Coordinate Descent has converged in 36 iterations
