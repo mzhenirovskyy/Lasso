@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.linear_model import Lasso as Sklearn_lasso
 from linear_regretion import Lasso
-from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.metrics import mean_squared_error
 
 ###############################################################################
 # generate some data to play with
@@ -44,10 +44,7 @@ print('rmse_beta = ', rmse_beta)
 
 # ---------------------MY OUTPUT------------------------------------------
 # Coordinate Descent has converged in 36 iterations
-# fit() took 15 s to finish
-# sklearn_r2 =  0.791335179159
-# r2 =  0.761621887132
-# r2_diff =  0.0375483016672
-# norm2_residual =  607.715269732
-# sklearn_norm2_residual =  573.334939003
-# norm2_diff =  0.0599655251946
+# fit() took 14 s to finish
+# rmse =  24.3086105185
+# sklearn_rmse =  22.9333975601
+# rmse_beta =  0.0887934625334

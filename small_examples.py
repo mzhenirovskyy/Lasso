@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.linear_model import Lasso as Sklearn_lasso
 from linear_regretion import Lasso
+from sklearn.metrics import mean_squared_error
 
 # Let see some toy example from scikit-learn.org:
 # http://scikit-learn.org/dev/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso
@@ -24,19 +25,20 @@ sklearn_beta = np.hstack((sklearn_lasso.intercept_, sklearn_lasso.coef_))
 print('sklearn_beta = ', sklearn_beta)
 print('beta[:] = ', lasso.beta)
 
-# Let see the L^2 vector norm of residual
+# Let see the rmse
+# http://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html
 
-norm2_residual = np.sum((sklearn_predict - predict) ** 2)
-print('norm2_residual = ', norm2_residual)
+rmse_residual = mean_squared_error(sklearn_predict, predict)
+print('rmse_residual = ', rmse_residual)
 
 # ---------------------MY OUTPUT------------------------------------------
 # Coordinate Descent has converged in 22 iterations
-# fit() took 5 s to finish
+# fit() took 3 s to finish
 # sklearn_predict =  [ 3.55  5.25  6.95]
 # predict =  [ 3.55018564  5.2501709   6.95015615]
 # sklearn_beta =  [ 0.15  0.85  0.  ]
 # beta[:] =  [  1.50012290e-01   8.49789778e-01   2.02848374e-04]
-# norm2_residual =  8.80505759471e-08
+# rmse_residual =  2.93501919824e-08
 
 ###############################################################################
 
@@ -57,8 +59,8 @@ print('predict = ', predict)
 sklearn_beta = np.hstack((sklearn_lasso.intercept_, sklearn_lasso.coef_))
 print('sklearn_beta = ', sklearn_beta)
 print('beta[:] = ', lasso.beta)
-norm2_residual = np.sum((sklearn_predict - predict) ** 2)
-print('norm2_residual = ', norm2_residual)
+rmse_residual = mean_squared_error(sklearn_predict, predict)
+print('rmse_residual = ', rmse_residual)
 
 # ---------------------MY OUTPUT------------------------------------------
 # Coordinate Descent has converged in 1 iterations
@@ -67,7 +69,7 @@ print('norm2_residual = ', norm2_residual)
 # predict =  [ 0.99995483  0.99995483  0.99995483]
 # sklearn_beta =  [ 1.  0.  0.]
 # beta[:] =  [ 0.99995483  0.          0.        ]
-# norm2_residual =  6.12189355988e-09
+# rmse_residual =  2.04063118663e-09
 
 ###############################################################################
 
@@ -88,11 +90,8 @@ print('predict = ', predict)
 sklearn_beta = np.hstack((sklearn_lasso.intercept_, sklearn_lasso.coef_))
 print('sklearn_beta = ', sklearn_beta)
 print('beta[:] = ', lasso.beta)
-
-# Let see the L^2 vector norm of residual
-
-norm2_residual = np.sum((sklearn_predict - predict) ** 2)
-print('norm2_residual = ', norm2_residual)
+rmse_residual = mean_squared_error(sklearn_predict, predict)
+print('rmse_residual = ', rmse_residual)
 
 # ---------------------MY OUTPUT------------------------------------------
 # Coordinate Descent has converged in 20 iterations
@@ -101,7 +100,7 @@ print('norm2_residual = ', norm2_residual)
 # predict =  [  3.53190682   8.42406079  13.31621476]
 # sklearn_beta =  [ 1.17388115  1.89141596  2.89123259]
 # beta[:] =  [ 1.08582983  2.19584625  2.69630772]
-# norm2_residual =  0.0414052968388
+# rmse_residual =  0.0138017656129
 
 
 
